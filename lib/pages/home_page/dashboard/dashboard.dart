@@ -31,13 +31,14 @@ class Dashboard extends ConsumerWidget {
         child: Column(
           children: [
             HeaderRow(),
+            JBox(height: 15),
             Row(
               children: [
                 Expanded(
                   flex: 5,
                   child: Container(
                     height: 500,
-                    color: AppColors.white,
+                    decoration: BoxDecoration(color: context.background, borderRadius: BorderRadius.circular(10)),
                   ),
                 ),
                 JBox(width: 5),
@@ -45,7 +46,7 @@ class Dashboard extends ConsumerWidget {
                   flex: 2,
                   child: Container(
                     height: 500,
-                    color: AppColors.grey,
+                    decoration: BoxDecoration(color: context.background, borderRadius: BorderRadius.circular(10)),
                   ),
                 ),
               ],

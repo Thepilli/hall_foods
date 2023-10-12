@@ -73,6 +73,7 @@ dependencies:
   percent_indicator: ^4.2.3
   sliding_up_panel: ^2.0.0+1
   tab_container: ^2.0.0
+  fl_chart: ^0.64.0
 
 dev_dependencies:
   flutter_test:

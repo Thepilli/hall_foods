@@ -338,6 +338,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "fl_chart",
+      "rootUri": "file:///C:/Users/jirip/AppData/Local/Pub/Cache/hosted/pub.dev/fl_chart-0.64.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///C:/Users/jirip/Documents/FlutterDev/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -884,7 +890,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-10-11T16:38:34.704749Z",
+  "generated": "2023-10-12T04:23:34.139957Z",
   "generator": "pub",
   "generatorVersion": "3.1.2"
 }
