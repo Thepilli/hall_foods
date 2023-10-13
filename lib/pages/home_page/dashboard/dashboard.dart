@@ -4,27 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hall_foods/app/app_colors.dart';
 import 'package:hall_foods/app/app_constants.dart';
+import 'package:hall_foods/models/alergens.dart';
+import 'package:hall_foods/models/food.dart';
+import 'package:hall_foods/providers/food_index_provider.dart';
 import 'package:hall_foods/shared/extensions/build_context.dart';
 import 'package:hall_foods/shared/extensions/widget_extension.dart';
 import 'package:hall_foods/shared/widgets/jbox.dart';
-
-enum ColorLabel {
-  blue('Blue', Colors.blue),
-  pink('Pink', Colors.pink),
-  green('Green', Colors.green),
-  yellow('Yellow', Colors.yellow),
-  grey('Grey', Colors.grey);
-
-  const ColorLabel(this.label, this.color);
-  final String label;
-  final Color color;
-}
 
 class Dashboard extends ConsumerWidget {
   const Dashboard({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    int foodIndex = ref.watch(foodIndexProvider);
     return SafeArea(
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(15),
@@ -39,6 +31,22 @@ class Dashboard extends ConsumerWidget {
                   child: Container(
                     height: 500,
                     decoration: BoxDecoration(color: context.background, borderRadius: BorderRadius.circular(10)),
+                    child: ListView.builder(
+                      itemCount: foodList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        Food food = foodList[index];
+                        return Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: ListTile(
+                              leading: Image.asset(food.foodImg),
+                              title: Text(food.foodname),
+                              subtitle: Text(food.alergens.toString()),
+                              onTap: () => ref.read(foodIndexProvider.notifier).onTap(index)),
+                        );
+                      },
+                    ),
                   ),
                 ),
                 JBox(width: 5),
@@ -48,7 +56,29 @@ class Dashboard extends ConsumerWidget {
                     height: 500,
                     decoration: BoxDecoration(color: context.background, borderRadius: BorderRadius.circular(10)),
                     child: Column(
+<<<<<<< HEAD
                       children: [],
+=======
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          foodList[foodIndex].foodImg,
+                          height: 200,
+                        ),
+                        Text('List of Alergens:'),
+                        SizedBox(
+                          height: 200,
+                          child: ListView.builder(
+                            itemCount: foodList[foodIndex].alergens.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              Alergen alergen =
+                                  alergensList.firstWhere((element) => element.alergenId == foodList[foodIndex].alergens[index]);
+                              return Text(alergen.alergenName);
+                            },
+                          ).paddingHorizontal(30),
+                        ),
+                      ],
+>>>>>>> ecc0b4b98d4f9a6101ec44c6d1c0956c4fc1d6d6
                     ),
                   ),
                 ),
