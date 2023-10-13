@@ -47,6 +47,9 @@ class Dashboard extends ConsumerWidget {
                   child: Container(
                     height: 500,
                     decoration: BoxDecoration(color: context.background, borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      children: [],
+                    ),
                   ),
                 ),
               ],
