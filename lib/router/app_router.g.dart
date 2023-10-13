@@ -6,7 +6,7 @@ part of 'app_router.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$goRouterHash() => r'3de158fc41fb58834b9f2c39b087e84a55d7a766';
+String _$goRouterHash() => r'f9501867f5078c3a25d17621b6ca3e0f98824aa2';
 
 /// See also [goRouter].
 @ProviderFor(goRouter)
@@ -21,4 +21,4 @@ final goRouterProvider = Provider<GoRouter>.internal(
 
 typedef GoRouterRef = ProviderRef<GoRouter>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
