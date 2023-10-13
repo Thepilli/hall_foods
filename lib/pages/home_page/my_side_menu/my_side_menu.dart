@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hall_foods/app/app_constants.dart';
+import 'package:hall_foods/pages/home_page/alergens_page/alergens_page.dart';
+import 'package:hall_foods/pages/home_page/dashboard_page/dashboard_page.dart';
+import 'package:hall_foods/providers/page_provider.dart';
 import 'package:hall_foods/shared/extensions/build_context.dart';
 
-class MySideMenu extends StatelessWidget {
+class MySideMenu extends ConsumerWidget {
   const MySideMenu({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Drawer(
       child: SingleChildScrollView(
         child: Column(
@@ -16,9 +20,15 @@ class MySideMenu extends StatelessWidget {
             DrawerHeader(
               child: Image.asset(ImagePath.rect_trans),
             ),
-            DrawerTile(TileName: 'Dashboard', TileIconData: Icons.home, onTap: () {}),
-            DrawerTile(TileName: 'Dashboard', TileIconData: Icons.home, onTap: () {}),
-            DrawerTile(TileName: 'Dashboard', TileIconData: Icons.home, onTap: () {}),
+            DrawerTile(
+                TileName: 'Dashboard',
+                TileIconData: Icons.home,
+                onTap: () => ref.read(menuPageProvider.notifier).onMenuPress(const Dashboard())),
+            DrawerTile(TileName: 'Menu', TileIconData: Icons.home, onTap: () {}),
+            DrawerTile(
+                TileName: 'Alergens',
+                TileIconData: Icons.home,
+                onTap: () => ref.read(menuPageProvider.notifier).onMenuPress(const AlergensPage())),
             DrawerTile(TileName: 'Dashboard', TileIconData: Icons.home, onTap: () {}),
             DrawerTile(TileName: 'Dashboard', TileIconData: Icons.home, onTap: () {}),
             DrawerTile(TileName: 'Dashboard', TileIconData: Icons.home, onTap: () {}),

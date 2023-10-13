@@ -1,13 +1,4 @@
-<<<<<<< HEAD
-2023/10/12-03:41:35.398 6668 Reusing MANIFEST C:\Users\jirip\AppData\Local\Temp\flutter_tools.2d8a888c\flutter_tools_chrome_device.f2552a5b\Default\Site Characteristics Database/MANIFEST-000001
-2023/10/12-03:41:35.398 6668 Recovering log #3
-2023/10/12-03:41:35.398 6668 Reusing old log C:\Users\jirip\AppData\Local\Temp\flutter_tools.2d8a888c\flutter_tools_chrome_device.f2552a5b\Default\Site Characteristics Database/000003.log 
-=======
-2023/10/12-09:42:39.312 65ac Reusing MANIFEST C:\Users\JIRI~1.PIL\AppData\Local\Temp\flutter_tools.958997b4\flutter_tools_chrome_device.2b427bc9\Default\Site Characteristics Database/MANIFEST-000001
-2023/10/12-09:42:39.312 65ac Recovering log #3
-2023/10/12-09:42:39.312 65ac Level-0 table #6: started
-2023/10/12-09:42:39.316 65ac Level-0 table #6: 130 bytes OK
-2023/10/12-09:42:39.316 65ac Recovering log #6
-2023/10/12-09:42:39.316 65ac Reusing old log C:\Users\JIRI~1.PIL\AppData\Local\Temp\flutter_tools.958997b4\flutter_tools_chrome_device.2b427bc9\Default\Site Characteristics Database/000006.log 
-2023/10/12-09:42:39.318 65ac Delete type=0 #3
->>>>>>> ecc0b4b98d4f9a6101ec44c6d1c0956c4fc1d6d6
+2023/10/13-10:29:46.713 643c Reusing MANIFEST C:\Users\JIRI~1.PIL\AppData\Local\Temp\flutter_tools.ad3939cb\flutter_tools_chrome_device.ebb1a47d\Default\Site Characteristics Database/MANIFEST-000001
+2023/10/13-10:29:46.714 643c Recovering log #6
+2023/10/13-10:29:46.714 643c Reusing old log C:\Users\JIRI~1.PIL\AppData\Local\Temp\flutter_tools.ad3939cb\flutter_tools_chrome_device.ebb1a47d\Default\Site Characteristics Database/000006.log 
+2023/10/13-10:29:46.714 643c Delete type=0 #3
