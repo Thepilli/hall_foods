@@ -56,9 +56,6 @@ class Dashboard extends ConsumerWidget {
                     height: 500,
                     decoration: BoxDecoration(color: context.background, borderRadius: BorderRadius.circular(10)),
                     child: Column(
-<<<<<<< HEAD
-                      children: [],
-=======
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Image.asset(
@@ -78,7 +75,6 @@ class Dashboard extends ConsumerWidget {
                           ).paddingHorizontal(30),
                         ),
                       ],
->>>>>>> ecc0b4b98d4f9a6101ec44c6d1c0956c4fc1d6d6
                     ),
                   ),
                 ),
