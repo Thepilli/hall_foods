@@ -16,6 +16,10 @@ class IconPath {
   static const String cart = 'assets/icons/cart.svg';
   static const String heart = 'assets/icons/heart.svg';
   static const String search = 'assets/icons/search.svg';
+  static const String documents = 'assets/icons/documents.png';
+  static const String files = 'assets/icons/files.png';
+  static const String media = 'assets/icons/media.png';
+  static const String unknown = 'assets/icons/unknown.png';
 }
 
 class ImagePath {

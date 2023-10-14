@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hall_foods/pages/home_page/my_side_menu/my_side_menu.dart';
 import 'package:hall_foods/providers/page_provider.dart';
+import 'package:hall_foods/responsive.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -15,10 +16,11 @@ class HomePage extends ConsumerWidget {
       body: SafeArea(
           child: Row(
         children: [
-          Expanded(
-            flex: 1,
-            child: MySideMenu(),
-          ),
+          if (Responsive.isDesktop(context))
+            Expanded(
+              flex: 1,
+              child: MySideMenu(),
+            ),
           Expanded(
             flex: 5,
             child: page,

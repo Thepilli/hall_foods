@@ -2,21 +2,20 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hall_foods/app/app_colors.dart';
-import 'package:hall_foods/app/app_constants.dart';
-import 'package:hall_foods/models/alergens.dart';
-import 'package:hall_foods/models/food.dart';
-import 'package:hall_foods/providers/food_index_provider.dart';
+import 'package:hall_foods/models/storage_detail.dart';
+import 'package:hall_foods/pages/home_page/dashboard_page/components/header_row.dart';
+import 'package:hall_foods/pages/home_page/dashboard_page/components/my_files_column.dart';
+import 'package:hall_foods/pages/home_page/dashboard_page/components/storage_details.dart';
+import 'package:hall_foods/responsive.dart';
 import 'package:hall_foods/shared/extensions/build_context.dart';
-import 'package:hall_foods/shared/extensions/widget_extension.dart';
 import 'package:hall_foods/shared/widgets/jbox.dart';
 
 class Dashboard extends ConsumerWidget {
   const Dashboard({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    int foodIndex = ref.watch(foodIndexProvider);
+    List<StorageDetail> storageDetails = storageDetailList;
+
     return SafeArea(
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(15),
@@ -25,125 +24,31 @@ class Dashboard extends ConsumerWidget {
             HeaderRow(),
             JBox(height: 15),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   flex: 5,
-                  child: Container(
-                    height: 500,
-                    decoration: BoxDecoration(color: context.background, borderRadius: BorderRadius.circular(10)),
-                    child: ListView.builder(
-                      itemCount: foodList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        Food food = foodList[index];
-                        return Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: ListTile(
-                              leading: Image.asset(food.foodImg),
-                              title: Row(
-                                children: [
-                                  Text(food.foodname, style: context.textTheme.bodyMedium),
-                                  if (food.isVegetarian)
-                                    Image.asset(
-                                      'assets/food/vegetarian.png',
-                                      height: 25,
-                                      width: 25,
-                                    )
-                                ],
-                              ),
-                              subtitle: Text(food.alergens.toString()),
-                              onTap: () => ref.read(foodIndexProvider.notifier).onTap(index)),
-                        );
-                      },
-                    ),
-                  ),
+                  child: MyFilesColumn(),
                 ),
                 JBox(width: 5),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    height: 500,
-                    decoration: BoxDecoration(color: context.background, borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          foodList[foodIndex].foodImg,
-                          height: 200,
-                        ),
-                        Text('List of Alergens:'),
-                        SizedBox(
-                          height: 200,
-                          child: ListView.builder(
-                            itemCount: foodList[foodIndex].alergens.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              Alergen alergen =
-                                  alergensList.firstWhere((element) => element.alergenId == foodList[foodIndex].alergens[index]);
-                              return Text(alergen.alergenName);
-                            },
-                          ).paddingHorizontal(30),
-                        ),
-                      ],
+                if (!Responsive.isMobile(context))
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      padding: EdgeInsets.all(15),
+                      height: 500,
+                      decoration: BoxDecoration(
+                        color: context.background,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: StorageDetails(storageDetails: storageDetails),
                     ),
                   ),
-                ),
               ],
             )
           ],
         ),
       ),
-    );
-  }
-}
-
-class HeaderRow extends StatelessWidget {
-  const HeaderRow({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          'Dashboard',
-          style: context.textTheme.titleLarge,
-        ),
-        const Spacer(),
-        Expanded(
-          child: TextField(
-            decoration: InputDecoration(
-              suffixIcon: Container(
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: context.primary),
-                padding: const EdgeInsets.all(12),
-                margin: const EdgeInsets.symmetric(horizontal: 16),
-                child: const Icon(
-                  Icons.search,
-                  color: AppColors.white,
-                ),
-              ),
-            ),
-          ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: AppColors.formFillLight,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          padding: const EdgeInsets.all(8),
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            children: [
-              const CircleAvatar(
-                backgroundImage: AssetImage(ImagePath.avatar),
-              ).paddingHorizontal(10),
-              const Text('Jiri Pillar'),
-              const Icon(Icons.keyboard_arrow_down)
-            ],
-          ),
-        )
-      ],
     );
   }
 }
