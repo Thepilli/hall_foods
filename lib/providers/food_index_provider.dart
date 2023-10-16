@@ -5,11 +5,11 @@ part 'food_index_provider.g.dart';
 @riverpod
 class FoodIndex extends _$FoodIndex {
   @override
-  int build() {
-    return 0;
+  String build() {
+    return 'foodId01';
   }
 
-  void onTap(int index) {
-    state = index;
+  void onTap(String foodId) {
+    state = foodId;
   }
 }

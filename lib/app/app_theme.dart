@@ -7,6 +7,7 @@ import 'app_text_theme.dart';
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
+      fontFamily: 'Special Elite',
       brightness: Brightness.light,
       primaryColor: AppColors.primaryLight,
       colorScheme: const ColorScheme.light(
@@ -53,6 +54,7 @@ class AppTheme {
 
   static ThemeData get darkTheme {
     return ThemeData(
+      fontFamily: 'Special Elite',
       brightness: Brightness.dark,
       primaryColor: AppColors.primaryDark,
       colorScheme: const ColorScheme.dark(
