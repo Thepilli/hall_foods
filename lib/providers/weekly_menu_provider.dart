@@ -6,15 +6,21 @@ part 'weekly_menu_provider.g.dart';
 
 @riverpod
 class WeeklyMenu extends _$WeeklyMenu {
-  Food emptyFood = Food(isVegetarian: false, foodId: '', foodImg: '', foodname: '', dayAvailable: '', alergens: []);
+  Food emptyFood = Food(
+      isVegetarian: false,
+      foodId: '',
+      foodImg: '',
+      foodname: 'You have not picked any lunch yet',
+      dayAvailable: '',
+      alergens: []);
   @override
   WeekMenu build() {
     return WeekMenu(
-      mondayLunch: emptyFood,
-      tuesdayLunch: emptyFood,
-      wednesdayLunch: emptyFood,
-      thursdayLunch: emptyFood,
-      fridayLunch: emptyFood,
+      mondayLunch: null,
+      tuesdayLunch: null,
+      wednesdayLunch: null,
+      thursdayLunch: null,
+      fridayLunch: null,
     );
   }
 
@@ -57,31 +63,31 @@ class WeeklyMenu extends _$WeeklyMenu {
     switch (food!.dayAvailable) {
       case 'Monday':
         weekMenu = state.copyWith(
-          mondayLunch: emptyFood,
+          mondayLunch: null,
         );
         state = weekMenu;
         break;
       case 'Tuesday':
         weekMenu = state.copyWith(
-          tuesdayLunch: emptyFood,
+          tuesdayLunch: null,
         );
         state = weekMenu;
         break;
       case 'Wednesday':
         weekMenu = state.copyWith(
-          wednesdayLunch: emptyFood,
+          wednesdayLunch: null,
         );
         state = weekMenu;
         break;
       case 'Thursday':
         weekMenu = state.copyWith(
-          thursdayLunch: emptyFood,
+          thursdayLunch: null,
         );
         state = weekMenu;
         break;
       case 'Friday':
         weekMenu = state.copyWith(
-          fridayLunch: emptyFood,
+          fridayLunch: null,
         );
         state = weekMenu;
         break;

@@ -24,11 +24,11 @@ class WeekMenu {
     Food? fridayLunch,
   }) {
     return WeekMenu(
-      mondayLunch: mondayLunch ?? this.mondayLunch,
-      tuesdayLunch: tuesdayLunch ?? this.tuesdayLunch,
-      wednesdayLunch: wednesdayLunch ?? this.wednesdayLunch,
-      thursdayLunch: thursdayLunch ?? this.thursdayLunch,
-      fridayLunch: fridayLunch ?? this.fridayLunch,
+      mondayLunch: mondayLunch,
+      tuesdayLunch: tuesdayLunch,
+      wednesdayLunch: wednesdayLunch,
+      thursdayLunch: thursdayLunch,
+      fridayLunch: fridayLunch,
     );
   }
 }

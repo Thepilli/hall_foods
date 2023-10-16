@@ -2,10 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hall_foods/app/app_colors.dart';
 import 'package:hall_foods/models/food.dart';
 import 'package:hall_foods/models/week_menu.dart';
 import 'package:hall_foods/providers/weekly_menu_provider.dart';
 import 'package:hall_foods/shared/extensions/build_context.dart';
+import 'package:hall_foods/shared/extensions/widget_extension.dart';
 
 class MyHomePage extends ConsumerWidget {
   const MyHomePage({super.key});
@@ -87,8 +90,8 @@ class MyDay extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.all(5),
+      padding: EdgeInsets.all(15),
       height: 100,
       width: context.sizeWidth * .3,
       decoration: BoxDecoration(
@@ -107,11 +110,15 @@ class MyDay extends ConsumerWidget {
               ),
               Text(
                 date,
-                style: context.textTheme.titleSmall,
-              ),
-              Text(
-                food?.foodname ?? 'You have not picked any lunch yet',
-                style: context.textTheme.bodyMedium,
+                style: context.textTheme.bodyLarge,
+              ).paddingBottom(10).paddingLeft(50),
+              SizedBox(
+                width: context.sizeWidth * .25,
+                child: Text(
+                  food?.foodname ?? 'You have not picked any lunch',
+                  style: context.textTheme.bodyMedium
+                      ?.copyWith(color: food?.foodname != null ? AppColors.completed : AppColors.notCompleted),
+                ),
               )
             ],
           ),
@@ -120,10 +127,27 @@ class MyDay extends ConsumerWidget {
             children: [
               Icon(Icons.edit),
               InkWell(
-                  onTap: () {
-                    print(food?.foodname);
-                    return ref.read(weeklyMenuProvider.notifier).removeFromMenu(food);
-                  },
+                  onTap: () => showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text('Do you really want to remove this lunch?'),
+                          actions: [
+                            IconButton(
+                              splashRadius: 20,
+                              onPressed: () => context.pop(),
+                              icon: Icon(Icons.close),
+                            ),
+                            IconButton(
+                              splashRadius: 20,
+                              onPressed: () {
+                                context.pop();
+                                ref.read(weeklyMenuProvider.notifier).removeFromMenu(food);
+                              },
+                              icon: Icon(Icons.check),
+                            ),
+                          ],
+                        ),
+                      ),
                   child: Icon(Icons.delete)),
             ],
           )
