@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hall_foods/pages/my_home_page/my_home_page.dart';
+import 'package:hall_foods/pages/my_order/my_order.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'page_provider.g.dart';
@@ -8,7 +8,7 @@ part 'page_provider.g.dart';
 class MenuPage extends _$MenuPage {
   @override
   Widget build() {
-    return const MyHomePage();
+    return const MyOrderPage();
   }
 
   void onMenuPress(Widget widget) {

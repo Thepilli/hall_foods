@@ -2,7 +2,7 @@
 // RiverpodGenerator
 // **************************************************************************
 
-String _$menuPageHash() => r'fc577c94dd15874009b49bb11278e150fe5eb6dd';
+String _$menuPageHash() => r'1a41e0c08d9256c399d362bca04901d0f6632f71';
 
 /// See also [MenuPage].
 @ProviderFor(MenuPage)

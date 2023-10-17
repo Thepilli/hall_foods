@@ -31,4 +31,10 @@ class ImagePath {
   static const String bonsai = 'assets/images/bonsai.png';
   static const String sky = 'assets/images/sky.png';
   static const String night = 'assets/images/night.png';
+  static const String vegetarian_label = 'assets/food/vegetarian_label.png';
+  static const String allergens = 'assets/food/allergens.png';
+  static const String hallfoods = 'assets/food/hallfoods.png';
+  static const String bento = 'assets/food/bento.png';
+  static const String calendar = 'assets/food/calendar.png';
+  static const String add_lunch = 'assets/food/add_lunch.png';
 }

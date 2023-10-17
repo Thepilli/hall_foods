@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hall_foods/app/app_colors.dart';
 import 'package:hall_foods/app/app_constants.dart';
 import 'package:hall_foods/models/alergens.dart';
@@ -18,6 +20,18 @@ enum WeekDay { Monday, Tuesday, Wednesday, Thursday, Friday }
 
 class FoodMenuPage extends ConsumerWidget {
   const FoodMenuPage({super.key});
+
+  void showWebColoredToast(String foodname) {
+    Fluttertoast.showToast(
+      webPosition: 'center',
+      gravity: ToastGravity.CENTER,
+      msg: "$foodname has been added",
+      toastLength: Toast.LENGTH_SHORT,
+      webBgColor: "#e74c3c",
+      textColor: Colors.black,
+      timeInSecForIosWeb: 5,
+    );
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -60,9 +74,9 @@ class FoodMenuPage extends ConsumerWidget {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: ListTile(
-                                trailing: IconButton(
-                                    onPressed: () => ref.read(weeklyMenuProvider.notifier).updateMenu(food),
-                                    icon: Icon(Icons.abc)),
+                                onTap: () {
+                                  ref.read(foodIndexProvider.notifier).onTap(food.foodId);
+                                },
                                 leading: Image.asset(food.foodImg),
                                 title: Row(
                                   children: [
@@ -70,16 +84,39 @@ class FoodMenuPage extends ConsumerWidget {
                                     JBox(width: 4),
                                     if (food.isVegetarian)
                                       Image.asset(
-                                        'assets/food/vegetarian.png',
+                                        ImagePath.vegetarian_label,
                                         height: 25,
-                                        width: 25,
+                                        // width: 25,
                                       )
                                   ],
                                 ),
                                 subtitle: Text(food.alergens.toString()),
-                                onTap: () {
-                                  ref.read(foodIndexProvider.notifier).onTap(food.foodId);
-                                },
+                                trailing: IconButton(
+                                    onPressed: () => showDialog(
+                                          context: context,
+                                          builder: (context) => AlertDialog(
+                                            title: Text('Do you really want to add \n${food.foodname}'),
+                                            actions: [
+                                              IconButton(
+                                                splashRadius: 20,
+                                                onPressed: () => context.pop(),
+                                                icon: Icon(Icons.close),
+                                              ),
+                                              IconButton(
+                                                splashRadius: 20,
+                                                onPressed: () {
+                                                  context.pop();
+                                                  {
+                                                    showWebColoredToast(food.foodname);
+                                                    return ref.read(weeklyMenuProvider.notifier).updateMenu(food);
+                                                  }
+                                                },
+                                                icon: Icon(Icons.check),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                    icon: Icon(Icons.abc)),
                               ),
                             );
                           },
@@ -100,17 +137,21 @@ class FoodMenuPage extends ConsumerWidget {
                         Image.asset(
                           foodList.firstWhere((element) => element.foodId == foodId).foodImg,
                           height: 200,
-                        ),
-                        Text('List of Alergens:'),
+                        ).paddingAll(30),
+                        Text('Seznam Alergenu:'),
+                        JBox(height: 10),
                         SizedBox(
                           height: 200,
-                          child: ListView.builder(
+                          child: ListView.separated(
+                            separatorBuilder: (context, index) => Divider(),
                             itemCount: foodList.firstWhere((element) => element.foodId == foodId).alergens.length,
                             itemBuilder: (BuildContext context, int index) {
                               Alergen alergen = alergensList.firstWhere((element) =>
                                   element.alergenId ==
                                   foodList.firstWhere((element) => element.foodId == foodId).alergens[index]);
-                              return Text(alergen.alergenName);
+                              return Text(
+                                alergen.alergenName,
+                              );
                             },
                           ).paddingHorizontal(30),
                         ),

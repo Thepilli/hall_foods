@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../pages/home_page/home_page.dart';
+import '../pages/root_page/root_page.dart';
 
 part 'app_router.g.dart';
 
@@ -34,7 +34,7 @@ GoRouter goRouter(GoRouterRef ref) {
       GoRoute(
         path: '/home',
         name: Routes.home.name,
-        builder: (context, state) => HomePage(
+        builder: (context, state) => RootPage(
           key: state.pageKey,
         ),
       ),

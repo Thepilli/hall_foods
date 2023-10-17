@@ -25,72 +25,48 @@ class WeeklyMenu extends _$WeeklyMenu {
   }
 
   void updateMenu(Food food) {
+    WeekMenu newMenu = state;
+
     switch (food.dayAvailable) {
       case 'Monday':
-        weekMenu = state.copyWith(
-          mondayLunch: food,
-        );
-        state = weekMenu;
+        newMenu = newMenu.copyWith(mondayLunch: food);
         break;
       case 'Tuesday':
-        weekMenu = state.copyWith(
-          tuesdayLunch: food,
-        );
-        state = weekMenu;
+        newMenu = newMenu.copyWith(tuesdayLunch: food);
         break;
       case 'Wednesday':
-        weekMenu = state.copyWith(
-          wednesdayLunch: food,
-        );
-        state = weekMenu;
+        newMenu = newMenu.copyWith(wednesdayLunch: food);
         break;
       case 'Thursday':
-        weekMenu = state.copyWith(
-          thursdayLunch: food,
-        );
-        state = weekMenu;
+        newMenu = newMenu.copyWith(thursdayLunch: food);
         break;
       case 'Friday':
-        weekMenu = state.copyWith(
-          fridayLunch: food,
-        );
-        state = weekMenu;
+        newMenu = newMenu.copyWith(fridayLunch: food);
         break;
     }
+
+    state = newMenu;
   }
 
   void removeFromMenu(Food? food) {
+    WeekMenu newMenu = state;
     switch (food!.dayAvailable) {
       case 'Monday':
-        weekMenu = state.copyWith(
-          mondayLunch: null,
-        );
-        state = weekMenu;
+        newMenu = newMenu.copyWith(mondayLunch: emptyFood);
         break;
       case 'Tuesday':
-        weekMenu = state.copyWith(
-          tuesdayLunch: null,
-        );
-        state = weekMenu;
+        newMenu = newMenu.copyWith(tuesdayLunch: emptyFood);
         break;
       case 'Wednesday':
-        weekMenu = state.copyWith(
-          wednesdayLunch: null,
-        );
-        state = weekMenu;
+        newMenu = newMenu.copyWith(wednesdayLunch: emptyFood);
         break;
       case 'Thursday':
-        weekMenu = state.copyWith(
-          thursdayLunch: null,
-        );
-        state = weekMenu;
+        newMenu = newMenu.copyWith(thursdayLunch: emptyFood);
         break;
       case 'Friday':
-        weekMenu = state.copyWith(
-          fridayLunch: null,
-        );
-        state = weekMenu;
+        newMenu = newMenu.copyWith(fridayLunch: emptyFood);
         break;
     }
+    state = newMenu;
   }
 }
