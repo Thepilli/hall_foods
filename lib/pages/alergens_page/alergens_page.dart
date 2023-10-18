@@ -37,9 +37,22 @@ class AlergensPage extends ConsumerWidget {
                           height: 80,
                           width: 80,
                         ),
-                        Text(
-                          alergen.alergenName,
-                          style: context.textTheme.bodyLarge,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              alergen.alergenName,
+                              style: context.textTheme.bodyLarge,
+                            ),
+                            JBox(height: 10),
+                            SizedBox(
+                              width: context.sizeWidth * .7,
+                              child: Text(
+                                alergen.alergenDetail,
+                                style: context.textTheme.bodyLarge,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),

@@ -6,13 +6,8 @@ part 'weekly_menu_provider.g.dart';
 
 @riverpod
 class WeeklyMenu extends _$WeeklyMenu {
-  Food emptyFood = Food(
-      isVegetarian: false,
-      foodId: '',
-      foodImg: '',
-      foodname: 'You have not picked any lunch yet',
-      dayAvailable: '',
-      alergens: []);
+  Food emptyFood =
+      Food(isVegetarian: false, foodId: '', foodImg: '', foodname: 'Nemáš objednané žádné jídlo', dayAvailable: '', alergens: []);
   @override
   WeekMenu build() {
     return WeekMenu(
@@ -28,16 +23,16 @@ class WeeklyMenu extends _$WeeklyMenu {
     WeekMenu newMenu = state;
 
     switch (food.dayAvailable) {
-      case 'Monday':
+      case 'Pondělí':
         newMenu = newMenu.copyWith(mondayLunch: food);
         break;
-      case 'Tuesday':
+      case 'Úterý':
         newMenu = newMenu.copyWith(tuesdayLunch: food);
         break;
-      case 'Wednesday':
+      case 'Středa':
         newMenu = newMenu.copyWith(wednesdayLunch: food);
         break;
-      case 'Thursday':
+      case 'Čtvrtek':
         newMenu = newMenu.copyWith(thursdayLunch: food);
         break;
       case 'Friday':
@@ -51,16 +46,16 @@ class WeeklyMenu extends _$WeeklyMenu {
   void removeFromMenu(Food? food) {
     WeekMenu newMenu = state;
     switch (food!.dayAvailable) {
-      case 'Monday':
+      case 'Pondělí':
         newMenu = newMenu.copyWith(mondayLunch: emptyFood);
         break;
-      case 'Tuesday':
+      case 'Úterý':
         newMenu = newMenu.copyWith(tuesdayLunch: emptyFood);
         break;
-      case 'Wednesday':
+      case 'Středa':
         newMenu = newMenu.copyWith(wednesdayLunch: emptyFood);
         break;
-      case 'Thursday':
+      case 'Čtvrtek':
         newMenu = newMenu.copyWith(thursdayLunch: emptyFood);
         break;
       case 'Friday':

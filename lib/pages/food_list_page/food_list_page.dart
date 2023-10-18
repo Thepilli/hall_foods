@@ -16,7 +16,13 @@ import 'package:hall_foods/shared/extensions/build_context.dart';
 import 'package:hall_foods/shared/extensions/widget_extension.dart';
 import 'package:hall_foods/shared/widgets/jbox.dart';
 
-enum WeekDay { Monday, Tuesday, Wednesday, Thursday, Friday }
+List<String> WeekDay = [
+  'Pondělí',
+  'Úterý',
+  'Středa',
+  'Čtvrtek',
+  'Pátek',
+];
 
 class FoodMenuPage extends ConsumerWidget {
   const FoodMenuPage({super.key});
@@ -49,11 +55,10 @@ class FoodMenuPage extends ConsumerWidget {
             JBox(height: 15),
             Row(children: [
               ...List.generate(
-                  WeekDay.values.length,
+                  WeekDay.length,
                   (index) => ElevatedButton(
-                      onPressed: () =>
-                          ref.read(foodMenuDayProvider.notifier).changeSelectedDay(WeekDay.values[index].name.toString()),
-                      child: Text(WeekDay.values[index].name.toString())))
+                      onPressed: () => ref.read(foodMenuDayProvider.notifier).changeSelectedDay(WeekDay[index].toString()),
+                      child: Text(WeekDay[index].toString())))
             ]),
             Row(
               children: [
@@ -78,24 +83,28 @@ class FoodMenuPage extends ConsumerWidget {
                                   ref.read(foodIndexProvider.notifier).onTap(food.foodId);
                                 },
                                 leading: Image.asset(food.foodImg),
-                                title: Row(
-                                  children: [
-                                    Text(food.foodname, style: context.textTheme.bodyMedium),
-                                    JBox(width: 4),
-                                    if (food.isVegetarian)
-                                      Image.asset(
-                                        ImagePath.vegetarian_label,
-                                        height: 25,
-                                        // width: 25,
-                                      )
-                                  ],
+                                title: Container(
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                          width: context.sizeHeight * .5,
+                                          child: Text(food.foodname, style: context.textTheme.bodyMedium)),
+                                      JBox(width: 4),
+                                      if (food.isVegetarian)
+                                        Image.asset(
+                                          ImagePath.vegetarian_label,
+                                          height: 25,
+                                          // width: 25,
+                                        )
+                                    ],
+                                  ),
                                 ),
                                 subtitle: Text(food.alergens.toString()),
                                 trailing: IconButton(
                                     onPressed: () => showDialog(
                                           context: context,
                                           builder: (context) => AlertDialog(
-                                            title: Text('Do you really want to add \n${food.foodname}'),
+                                            title: Text('Chceš si objednat \n\n${food.foodname}?'),
                                             actions: [
                                               IconButton(
                                                 splashRadius: 20,
@@ -116,7 +125,7 @@ class FoodMenuPage extends ConsumerWidget {
                                             ],
                                           ),
                                         ),
-                                    icon: Icon(Icons.abc)),
+                                    icon: Icon(Icons.add_shopping_cart)),
                               ),
                             );
                           },
@@ -138,7 +147,8 @@ class FoodMenuPage extends ConsumerWidget {
                           foodList.firstWhere((element) => element.foodId == foodId).foodImg,
                           height: 200,
                         ).paddingAll(30),
-                        Text('Seznam Alergenu:'),
+                        Container(
+                            decoration: BoxDecoration(border: Border(bottom: BorderSide())), child: Text('Seznam Alergenu:')),
                         JBox(height: 10),
                         SizedBox(
                           height: 200,

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hall_foods/app/app_constants.dart';
 import 'package:hall_foods/pages//alergens_page/alergens_page.dart';
 import 'package:hall_foods/pages//food_list_page/food_list_page.dart';
-import 'package:hall_foods/pages/my_order/my_order.dart';
+import 'package:hall_foods/pages/my_order_page/my_order_page.dart';
 import 'package:hall_foods/providers/page_provider.dart';
 import 'package:hall_foods/shared/extensions/build_context.dart';
 

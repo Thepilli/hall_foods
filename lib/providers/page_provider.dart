@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hall_foods/pages/my_order/my_order.dart';
+import 'package:hall_foods/pages/my_order_page/my_order_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'page_provider.g.dart';
