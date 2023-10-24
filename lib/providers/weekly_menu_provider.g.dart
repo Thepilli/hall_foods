@@ -6,7 +6,7 @@ part of 'weekly_menu_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$weeklyMenuHash() => r'cabb9f31ea3885a6e7b5ba64db78d5022904d827';
+String _$weeklyMenuHash() => r'82f9a70f57f4b4300dad39fe59461b8e880a2de1';
 
 /// See also [WeeklyMenu].
 @ProviderFor(WeeklyMenu)

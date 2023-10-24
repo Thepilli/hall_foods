@@ -50,21 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyACXP0P358naFFQvb98_JOqxtoZs-aeuho',
-    appId: '1:696259143481:web:bf6362a169ccd7d4fd6ae8',
-    messagingSenderId: '696259143481',
-    projectId: 'my-api-endpoint',
-    authDomain: 'my-api-endpoint.firebaseapp.com',
-    databaseURL: 'https://my-api-endpoint-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'my-api-endpoint.appspot.com',
+    apiKey: 'AIzaSyCQ_TilYnJi-nO20QuG5bBRLGTxubJQajc',
+    appId: '1:190334342953:web:7456003dc11dd905600938',
+    messagingSenderId: '190334342953',
+    projectId: 'hall-foods',
+    authDomain: 'hall-foods.firebaseapp.com',
+    storageBucket: 'hall-foods.appspot.com',
+    measurementId: 'G-1QR0M09GTZ',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCsmFGxromjfoir-rC8CSDU46peqpmpFaQ',
-    appId: '1:696259143481:android:f5e5a61ca2016d5dfd6ae8',
-    messagingSenderId: '696259143481',
-    projectId: 'my-api-endpoint',
-    databaseURL: 'https://my-api-endpoint-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'my-api-endpoint.appspot.com',
+    apiKey: 'AIzaSyDujmSQG1P8wWsaoOUayZkBA17IovAw7sI',
+    appId: '1:190334342953:android:ce8c0ab282c9b7ba600938',
+    messagingSenderId: '190334342953',
+    projectId: 'hall-foods',
+    storageBucket: 'hall-foods.appspot.com',
   );
 }

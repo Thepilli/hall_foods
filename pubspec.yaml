@@ -31,6 +31,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_localizations:
+    sdk: flutter
+  firebase_ui_localizations: ^1.2.0
+
   #database
   firebase_core: ^2.15.1
   firebase_ui_auth: ^1.8.0
@@ -39,7 +43,7 @@ dependencies:
   # firebase_storage: ^11.2.6
   cloud_firestore: ^4.8.5
   # google_sign_in: ^6.1.4
-  # shared_preferences: ^2.0.13
+  shared_preferences: ^2.0.13
 
   #builders
   json_annotation: ^4.8.1
@@ -118,9 +122,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Special Elite
+    - family: SocialIcons
       fonts:
-        - asset: assets/fonts/SpecialElite-Regular.ttf
+        - asset: packages/firebase_ui_auth/fonts/SocialIcons.ttf
 
   #
   # For details regarding fonts from package dependencies,

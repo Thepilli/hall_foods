@@ -6,7 +6,7 @@ part of 'page_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$menuPageHash() => r'1a41e0c08d9256c399d362bca04901d0f6632f71';
+String _$menuPageHash() => r'f0e9060573069824d748f35d36f333fc2252051e';
 
 /// See also [MenuPage].
 @ProviderFor(MenuPage)

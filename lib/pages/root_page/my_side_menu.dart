@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hall_foods/app/app_constants.dart';
 import 'package:hall_foods/pages//alergens_page/alergens_page.dart';
 import 'package:hall_foods/pages//food_list_page/food_list_page.dart';
+import 'package:hall_foods/pages/authentication/presentation/custom_profile_screen.dart';
 import 'package:hall_foods/pages/my_order_page/my_order_page.dart';
 import 'package:hall_foods/providers/page_provider.dart';
 import 'package:hall_foods/shared/extensions/build_context.dart';
@@ -39,6 +40,11 @@ class MySideMenu extends ConsumerWidget {
                 TileName: 'Alergeny',
                 TileIconUrl: ImagePath.allergens,
                 onTap: () => ref.read(menuPageProvider.notifier).onMenuPress(const AlergensPage())),
+            const Divider(),
+            DrawerTile(
+                TileName: 'profile',
+                TileIconUrl: ImagePath.avatar,
+                onTap: () => ref.read(menuPageProvider.notifier).onMenuPress(const CustomProfileScreen())),
           ],
         ),
       ),

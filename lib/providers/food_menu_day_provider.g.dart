@@ -6,7 +6,7 @@ part of 'food_menu_day_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$foodMenuDayHash() => r'a37f25ba6c6378d07bbbb39e9d8831c337208721';
+String _$foodMenuDayHash() => r'c7b60b8a2b947ff9752013ee856d13c069da7334';
 
 /// See also [FoodMenuDay].
 @ProviderFor(FoodMenuDay)
